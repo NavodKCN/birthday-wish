@@ -515,7 +515,7 @@
   <div class="stars" id="stars"></div>
   <p class="hero-tag">✦ A little something made with love ✦</p>
   <h1 class="hero-title">Happy Birthday</h1>
-  <p class="hero-name">My Love 🌹</p>
+  <p class="hero-name">Nethu 🌹</p>
   <p class="hero-sub">scroll down, there's magic waiting for you</p>
   <div class="scroll-hint">
     SCROLL
@@ -888,6 +888,20 @@ const finaleObs = new IntersectionObserver(entries => {
   if (entries[0].isIntersecting) { launchConfetti(); finaleObs.disconnect(); }
 }, {threshold: 0.3});
 finaleObs.observe(document.getElementById('finale'));
+
+// Auto-play on first user interaction (browser policy requires it)
+document.addEventListener('click', function startOnce() {
+  if (!musicPlaying) toggleMusic();
+  document.removeEventListener('click', startOnce);
+}, { once: true });
+
+// Try immediate autoplay
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    if (!musicPlaying) toggleMusic();
+  }, 1000);
+});
+
 </script>
 </body>
 </html>
