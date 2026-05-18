@@ -889,19 +889,6 @@ const finaleObs = new IntersectionObserver(entries => {
 }, {threshold: 0.3});
 finaleObs.observe(document.getElementById('finale'));
 
-// Auto-play on first user interaction (browser policy requires it)
-document.addEventListener('click', function startOnce() {
-  if (!musicPlaying) toggleMusic();
-  document.removeEventListener('click', startOnce);
-}, { once: true });
-
-// Try immediate autoplay
-window.addEventListener('load', () => {
-  setTimeout(() => {
-    if (!musicPlaying) toggleMusic();
-  }, 1000);
-});
-
 </script>
 </body>
 </html>
